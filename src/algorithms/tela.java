@@ -9,6 +9,7 @@ import algorithms.grafico.linhas;
 import algorithms.grafico.linhas2;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  *
@@ -362,12 +363,17 @@ public class tela extends javax.swing.JFrame {
         }
     }
         
-    
-    
-    
-    private void JBVetorAleatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVetorAleatorioActionPerformed
-        // TODO add your handling code here:
-    	painelInterno.removeAll();
+    public  JPanel  getPainel(){
+        return painelInterno;
+    }
+    public void ColocaIsso(JPanel painel){
+        painelInterno.add(painel);
+    }
+    public void limpaIsso(){
+        painelInterno.removeAll();
+    }
+    public void arrumaPosicao(){
+        
     	javax.swing.GroupLayout painelInternoLayout = new javax.swing.GroupLayout(painelInterno);
         painelInterno.setLayout(painelInternoLayout);
         painelInternoLayout.setHorizontalGroup(
@@ -378,7 +384,11 @@ public class tela extends javax.swing.JFrame {
             painelInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 430, Short.MAX_VALUE)
         );
-        
+    }
+    private void JBVetorAleatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVetorAleatorioActionPerformed
+        // TODO add your handling code here:
+    	painelInterno.removeAll();
+        arrumaPosicao();
         vetorAleatorio = new vetores(3, TamanhoVetor);
         linha.setVetor(vetorAleatorio);
         linha.paintComponent(getGraphics());      
@@ -399,17 +409,7 @@ public class tela extends javax.swing.JFrame {
     private void JBvetorCrescenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBvetorCrescenteActionPerformed
         // TODO add your handling code here:
     	painelInterno.removeAll();
-    	javax.swing.GroupLayout painelInternoLayout = new javax.swing.GroupLayout(painelInterno);
-        painelInterno.setLayout(painelInternoLayout);
-        painelInternoLayout.setHorizontalGroup(
-            painelInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1103, Short.MAX_VALUE)
-        );
-        painelInternoLayout.setVerticalGroup(
-            painelInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
-        );
-        
+    	arrumaPosicao();
         vetorOrganizadoCrescente = new vetores(1, TamanhoVetor);
         linha.setVetor(vetorOrganizadoCrescente);
         linha.paintComponent(getGraphics());      
@@ -474,16 +474,7 @@ public class tela extends javax.swing.JFrame {
     private void JBVetorDecrescenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVetorDecrescenteActionPerformed
         // TODO add your handling code here:
     	painelInterno.removeAll();
-    	 javax.swing.GroupLayout painelInternoLayout = new javax.swing.GroupLayout(painelInterno);
-         painelInterno.setLayout(painelInternoLayout);
-         painelInternoLayout.setHorizontalGroup(
-             painelInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-             .addGap(0, 1103, Short.MAX_VALUE)
-         );
-         painelInternoLayout.setVerticalGroup(
-             painelInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-             .addGap(0, 430, Short.MAX_VALUE)
-         );
+    	 arrumaPosicao();
          
          vetorOrganizadoDecrescente = new vetores(2, TamanhoVetor);
          linha.setVetor(vetorOrganizadoDecrescente);
@@ -505,16 +496,7 @@ public class tela extends javax.swing.JFrame {
     private void JBVetorRepetidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVetorRepetidoActionPerformed
         // TODO add your handling code here:
     	painelInterno.removeAll();
-    	 javax.swing.GroupLayout painelInternoLayout = new javax.swing.GroupLayout(painelInterno);
-         painelInterno.setLayout(painelInternoLayout);
-         painelInternoLayout.setHorizontalGroup(
-             painelInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-             .addGap(0, 1103, Short.MAX_VALUE)
-         );
-         painelInternoLayout.setVerticalGroup(
-             painelInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-             .addGap(0, 430, Short.MAX_VALUE)
-         );
+    	 arrumaPosicao();
          
          vetorAleatorioRepedindo = new vetores(4, TamanhoVetor);
          linha.setVetor(vetorAleatorioRepedindo);
@@ -522,11 +504,11 @@ public class tela extends javax.swing.JFrame {
          painelInterno.remove(linha);
          
          painelInterno.add(linha);
-         linhas2  linha2= new linhas2();
+       /*  linhas2  linha2= new linhas2();
          linha2.setVetor(4);
          todasMenosEsta(4);
          linha2.paintComponent(getGraphics());
-         painelInterno.add(linha2);
+         painelInterno.add(linha2);*/
          Tela_Log_funcionamento.append("tentativa de colocar linhas \n");
          linha.setVisible(true);
          Tela_Log_funcionamento.append("Vetor definido Aleatorio repetido"); 
