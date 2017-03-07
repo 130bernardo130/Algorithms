@@ -25,9 +25,19 @@ public class InsertionSort {
             for(int j = i ; j > 0 ; j--){
                 if(input.pegaNumero(j) < input.pegaNumero(j-1)){
                  troca(j,j-1,input);
+                  if(tela.vetorAleatorioRepedindobol){
+                  tela.vetorAleatorioRepedindo.setVetor(input.pegavetor());
+                }else if(tela.vetorAleatoriobol){
+                  tela.vetorAleatorio.setVetor(input.pegavetor());                  
+                }else if(tela.vetorOrganizadoCrescentebol){
+                  tela.vetorOrganizadoCrescente.setVetor(input.pegavetor());
+                }else if(tela.vetorOrganizadoDecrescentebol){
+                  tela.vetorOrganizadoDecrescente.setVetor(input.pegavetor());
+                }
                 }
             }
         }
+        tela.threadGo= false;
         return input;
     }
 }

@@ -46,10 +46,7 @@ public class linhas extends JPanel{
 		setBackground(Color.white);
 		g.setColor(Color.blue);
 		g.drawLine(15, 0, 15,200);
-		g.drawLine(5, 180, 1103,180);
-             
-               
-		setVisible(true);
+		g.drawLine(5, 180, 1103,180);                           		
 		setSize(1103, 200);
          
                 for(int i = 0;i<vetor.getTotal();i++){

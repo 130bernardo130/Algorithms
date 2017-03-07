@@ -58,7 +58,8 @@ public class threadPreenche_grafico implements Runnable {
             linha2.setVetor(i_);
             linha2.paintComponent(g_);
             painel_.add(linha2);
-            
+            linha.setVisible(true);
+            linha2.setVisible(true);
             
             
             

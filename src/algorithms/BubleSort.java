@@ -25,12 +25,21 @@ public class BubleSort {
         for (int m = n; m >= 0; m--) {
             for (int i = 0; i < n - 1; i++) {
                 k = i + 1;
-                if (vetor.pegaNumero(i) > vetor.pegaNumero(k)) {
-                    troca(i,k, vetor);
+                    if (vetor.pegaNumero(i) > vetor.pegaNumero(k)) {
+                        troca(i,k, vetor);
+                    if(tela.vetorAleatorioRepedindobol){
+                      tela.vetorAleatorioRepedindo.setVetor(vetor.pegavetor());
+                    }else if(tela.vetorAleatoriobol){
+                      tela.vetorAleatorio.setVetor(vetor.pegavetor());                  
+                    }else if(tela.vetorOrganizadoCrescentebol){
+                      tela.vetorOrganizadoCrescente.setVetor(vetor.pegavetor());
+                    }else if(tela.vetorOrganizadoDecrescentebol){
+                      tela.vetorOrganizadoDecrescente.setVetor(vetor.pegavetor());
+                    }
                 }
             }
         }
-        
+      tela.threadGo= false;  
     }
 
 }
