@@ -46,26 +46,11 @@ public class linhas extends JPanel{
 		g.drawLine(15, 0, 15,200);
 		g.drawLine(5, 180, 1103,180);                           		
 		setSize(1103, 200);
-		if(tela.vetorAleatorioRepedindobol){
-            vetor= tela.vetorAleatorioRepedindo;
-          
-
-        }else if(tela.vetorAleatoriobol){
-        	vetor= tela. vetorAleatorio;
-      
-            
-        }else if(tela.vetorOrganizadoCrescentebol){
-        	vetor= tela.vetorOrganizadoCrescente;
-          
-
-        }else if(tela.vetorOrganizadoDecrescentebol){
-        	vetor= tela. vetorOrganizadoDecrescente;
-           
-        }
+	
 		
 
-        for(int i = 0;i<vetor.getTotal();i++){    	
-            g.drawLine(15+mapear(i,1080,15,vetor.getTotal()), mapear(vetor.pegaNumero(i),180, vetor.getTotal()), 15+mapear(i,1080,15,vetor.getTotal()),180);
+        for(int i = 0;i<tela.vetorEstatico.getTotal();i++){    	
+            g.drawLine(15+mapear(i,1080,15,tela.vetorEstatico.getTotal()), mapear(tela.vetorEstatico.vetor[i],180, tela.vetorEstatico.getTotal()), 15+mapear(i,1080,15,tela.vetorEstatico.getTotal()),180);
         }	
         
 	}

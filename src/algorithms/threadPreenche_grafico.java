@@ -37,33 +37,36 @@ public class threadPreenche_grafico implements Runnable {
        // linha.setVetor(vetorEstatico_);
         while(tela.threadGo){
             
-            
-            
-        	 
-        	tela.painelInterno.removeAll();
         	tela.arrumaPosicao();
-        	linha.setVetor(vetorEstatico_);
-            try {
-            	linha.paintComponent(g_);    	
-			} catch (NullPointerException e) {
-				// TODO: handle exception
-				System.out.println("o primeiro g");
-			}
-        	
             tela.painelInterno.add(linha);            
             linhas2 linha2 = new linhas2();
             linha2.setVetor(i_);
+          
+            linha2.setVisible(true);
+           
+            tela.painelInterno.add(linha2);
+        	 
+        	tela.painelInterno.removeAll();
+        	
+        	linha.setVetor(vetorEstatico_);
+            try {
+            	linha.paintComponent(g_);
+            	Thread.sleep(300);
+			} catch (NullPointerException | InterruptedException e) {
+				// TODO: handle exception
+				System.out.println("o primeiro g");
+			}
             try {
             	
             	linha2.paintComponent(g_);	
-			} catch (NullPointerException e) {
+            	 Thread.sleep(300);
+			} catch (NullPointerException | InterruptedException e) {
 				System.out.println("a merda do G");
 			}
-            
-            tela.painelInterno.add(linha2);
+        
             linha.setVisible(true);
-            linha2.setVisible(true);
-            
+           
+            tela.arrumaPosicao();
             
             
         }

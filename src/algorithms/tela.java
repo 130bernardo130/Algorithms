@@ -163,7 +163,7 @@ public class tela extends javax.swing.JFrame {
 
         jLabel10.setText("algoritmo organizador:");
 
-        JBbuble.setText("Buble Sort");
+        JBbuble.setText("Bubble Sort");
         JBbuble.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBbubleActionPerformed(evt);
@@ -335,8 +335,10 @@ public class tela extends javax.swing.JFrame {
     public static boolean vetorOrganizadoDecrescentebol= false;
     public static vetores vetorAleatorioRepedindo;
     public static boolean vetorAleatorioRepedindobol= false;
-    public static int TamanhoVetor =500000;
+    public static int TamanhoVetor =100000;
     public static int metodo;
+    
+    public static vetores vetorEstatico;
     private void todasMenosEsta(int i){
         switch(i){
             case 1:
@@ -426,7 +428,8 @@ public class tela extends javax.swing.JFrame {
     	painelInterno.removeAll();
         arrumaPosicao();
         vetorAleatorio = new vetores(3, TamanhoVetor);
-        linha.setVetor(vetorAleatorio);
+        vetorEstatico = vetorAleatorio;
+        
         linha.paintComponent(getGraphics());      
         painelInterno.remove(linha);
         painelInterno.add(linha);
@@ -447,7 +450,7 @@ public class tela extends javax.swing.JFrame {
     	painelInterno.removeAll();
     	arrumaPosicao();
         vetorOrganizadoCrescente = new vetores(1, TamanhoVetor);
-        linha.setVetor(vetorOrganizadoCrescente);
+       	vetorEstatico = vetorOrganizadoCrescente;
         linha.paintComponent(getGraphics());      
         painelInterno.remove(linha);
         
@@ -481,7 +484,7 @@ public class tela extends javax.swing.JFrame {
         // TODO add your handling code here:
     	metodo = 2;
     	JLalgaritmo_usado.setText("Insertion");
-    	Tela_Log_funcionamento.append("metodo definido: Isnsertion\n");
+    	Tela_Log_funcionamento.append("metodo definido: Insertion\n");
     }//GEN-LAST:event_JBinsertionActionPerformed
 
     private void JBQuantidade_100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBQuantidade_100ActionPerformed
@@ -522,7 +525,7 @@ public class tela extends javax.swing.JFrame {
     	 
     	painelInterno.remove(linha);
          vetorOrganizadoDecrescente = new vetores(2, TamanhoVetor);
-         linha.setVetor(vetorOrganizadoDecrescente);
+         vetorEstatico = vetorOrganizadoDecrescente;
          arrumaPosicao();
          linha.paintComponent(getGraphics());      
          todasMenosEsta(2);
@@ -546,7 +549,7 @@ public class tela extends javax.swing.JFrame {
     	 arrumaPosicao();
     	 todasMenosEsta(4);
          vetorAleatorioRepedindo = new vetores(4, TamanhoVetor);
-         linha.setVetor(vetorAleatorioRepedindo);
+         vetorEstatico = vetorAleatorioRepedindo;
          linha.paintComponent(getGraphics());
          painelInterno.add(linha);
         /* linhas2  linha2= new linhas2();
@@ -612,7 +615,7 @@ public class tela extends javax.swing.JFrame {
     private javax.swing.JButton JBinsertion;
     private javax.swing.JButton JBvetorCrescente;
     private javax.swing.JLabel JLalgaritmo_usado;
-    private javax.swing.JLabel JLtempo_de_organizacao;
+    static public javax.swing.JLabel JLtempo_de_organizacao;
     private javax.swing.JLabel JLtipo_de_vetor_selecionado;
     private javax.swing.JTextArea Tela_Log_funcionamento;
     private javax.swing.JLabel jLabel10;

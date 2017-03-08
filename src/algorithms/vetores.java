@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  */
 public class vetores {
   
-    private int vetor[];
+    public int vetor[];
     
     
     public void setaNumero(int i, int valor){

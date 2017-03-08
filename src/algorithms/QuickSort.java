@@ -12,9 +12,9 @@ package algorithms;
 public class QuickSort {
     private int array[];
     private int length;
- 
+    long tempoQuick;
     public void sort(vetores inputArr) {
-         
+         tempoQuick = System.nanoTime();
         if (inputArr == null || inputArr.getTotal() == 0) {
             return;
         }
@@ -37,12 +37,17 @@ public class QuickSort {
              * from right side which is less then the pivot value. Once the search
              * is done, then we exchange both numbers.
              */
-            while (array[i] < pivot) {
-                i++;
-            }
-            while (array[j] > pivot) {
-                j--;
-            }
+        	try{
+        		while (array[i] < pivot) {
+                    i++;
+                }
+                while (array[j] > pivot) {
+                    j--;
+                }	
+        	}catch(Exception e){
+        		System.out.println(e);
+        	}
+            
             if (i <= j) {
                 exchangeNumbers(i, j);
                 //move index to next position on both sides
@@ -61,11 +66,15 @@ public class QuickSort {
         }
         
         // call quickSort() method recursively
-        if (lowerIndex < j)
+        if (lowerIndex < j){
             quickSort(lowerIndex, j);
-        if (i < higherIndex)
+        }
+        if (i < higherIndex){
             quickSort(i, higherIndex);
+        }
+        tempoQuick =  System.nanoTime()- tempoQuick ;
         
+        tela.JLtempo_de_organizacao.setText(tempoQuick+"ms");
         tela.threadGo= false;
     }
  
