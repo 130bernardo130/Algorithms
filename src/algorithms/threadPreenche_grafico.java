@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package algorithms;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
@@ -23,10 +24,9 @@ public class threadPreenche_grafico implements Runnable {
    
     
     
-    public threadPreenche_grafico(JPanel painel,vetores vetorEstatico,int i,Graphics g ) {
+    public threadPreenche_grafico(vetores vetorEstatico,int i,Graphics g ) {
     g_ = g;
-    vetorEstatico_=vetorEstatico;
-    painel_ = painel;
+    vetorEstatico_=vetorEstatico;    
     i_ = i;
     }
     @Override
@@ -34,30 +34,33 @@ public class threadPreenche_grafico implements Runnable {
         /*vetorEstatico_ = vetorEstatico;
         vetorMovel_ = vetorMovel;*/
         linhas linha = new linhas();
-        linha.setVetor(vetorEstatico_);
+       // linha.setVetor(vetorEstatico_);
         while(tela.threadGo){
             
             
             
-            
-            painel_.removeAll();
-            javax.swing.GroupLayout painelInternoLayout = new javax.swing.GroupLayout(painel_);
-            painel_.setLayout(painelInternoLayout);
-            painelInternoLayout.setHorizontalGroup(
-                    painelInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGap(0, 1103, Short.MAX_VALUE)
-            );
-            painelInternoLayout.setVerticalGroup(
-                    painelInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGap(0, 430, Short.MAX_VALUE)
-            );
-            linha.paintComponent(g_);    
-            painel_.add(linha);
-            
+        	 
+        	tela.painelInterno.removeAll();
+        	tela.arrumaPosicao();
+        	linha.setVetor(vetorEstatico_);
+            try {
+            	linha.paintComponent(g_);    	
+			} catch (NullPointerException e) {
+				// TODO: handle exception
+				System.out.println("o primeiro g");
+			}
+        	
+            tela.painelInterno.add(linha);            
             linhas2 linha2 = new linhas2();
             linha2.setVetor(i_);
-            linha2.paintComponent(g_);
-            painel_.add(linha2);
+            try {
+            	
+            	linha2.paintComponent(g_);	
+			} catch (NullPointerException e) {
+				System.out.println("a merda do G");
+			}
+            
+            tela.painelInterno.add(linha2);
             linha.setVisible(true);
             linha2.setVisible(true);
             

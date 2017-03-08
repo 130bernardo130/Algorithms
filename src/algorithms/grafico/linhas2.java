@@ -47,32 +47,65 @@ public class linhas2 extends JPanel{
 		g.setColor(Color.blue);
                 g.drawLine(15, 230 , 15, 430);
                 g.drawLine(15,410,1103,410);
-		setSize(1103, 430);
+                setSize(1103, 430);
             if(vetorUsado == 0){
                 for(int i = 0;i<vetor.getTotal();i++){
-                    g.drawLine(15+mapear(i,1080,15,vetor.getTotal()), mapear(vetor.pegaNumero(i),180, vetor.getTotal()), 15+mapear(i,1080,15,vetor.getTotal()),180);
+                	System.out.println("DEU MERDA");
                 }
                  
             }else{
+            	if(tela.vetorAleatorioRepedindobol){
+                    vetor= tela.vetorAleatorioRepedindo;
+                  
+
+                }else if(tela.vetorAleatoriobol){
+                	vetor= tela. vetorAleatorio;
+              
+                    
+                }else if(tela.vetorOrganizadoCrescentebol){
+                	vetor= tela.vetorOrganizadoCrescente;
+                  
+
+                }else if(tela.vetorOrganizadoDecrescentebol){
+                	vetor= tela. vetorOrganizadoDecrescente;
+                   
+                }
+            	/*for(int i = 0;i<vetor.getTotal();i++){ 
+            		System.out.println("ta chegando aqui ?");
+            		g.drawLine(15+mapear(i,1080,15,tela.TamanhoVetor), mapear(vetor.pegaNumero(i),180, tela.TamanhoVetor)-230, 15+mapear(i,1080,15,tela.TamanhoVetor),410);
+                }*/	
                switch(vetorUsado){
                      case 1:
                          for(int i = 0;i<tela.TamanhoVetor;i++){
+                        	   g.drawLine(15, 230 , 15, 430);
+                               g.drawLine(15,410,1103,410);
+                               System.out.println("aquiorganizado");
                             g.drawLine(15+mapear(i,1080,15,tela.TamanhoVetor), mapear(tela.vetorOrganizadoCrescente.pegaNumero(i),180, tela.TamanhoVetor)+230, 15+mapear(i,1080,15,tela.TamanhoVetor),410);
                          }
                          break;
                      case 2:
                     	 for(int i = 0;i<tela.TamanhoVetor;i++){
+                    		   g.drawLine(15, 230 , 15, 430);
+                               g.drawLine(15,410,1103,410);
+                               System.out.println("aquidecrescente");
                              g.drawLine(15+mapear(i,1080,15,tela.TamanhoVetor), mapear(tela.vetorOrganizadoDecrescente.pegaNumero(i),180, tela.TamanhoVetor)+230, 15+mapear(i,1080,15,tela.TamanhoVetor),410);
                           }
                          break;
                      case 3:
                     	 for(int i = 0;i<tela.TamanhoVetor;i++){
+                    		   g.drawLine(15, 230 , 15, 430);
+                               g.drawLine(15,410,1103,410);
+                               System.out.println("aquialearorio");
                              g.drawLine(15+mapear(i,1080,15,tela.TamanhoVetor), mapear(tela.vetorAleatorio.pegaNumero(i),180, tela.TamanhoVetor)+230, 15+mapear(i,1080,15,tela.TamanhoVetor),410);
                           }
                          break;
                     case 4:
                     	for(int i = 0;i<tela.TamanhoVetor;i++){
-                            g.drawLine(15+mapear(i,1080,15,tela.TamanhoVetor), mapear(tela.vetorAleatorioRepedindo.pegaNumero(i),180, tela.TamanhoVetor)+230, 15+mapear(i,1080,15,tela.TamanhoVetor),410);
+                    		   g.drawLine(15, 230 , 15, 430);
+                               g.drawLine(15,410,1103,410);
+                               System.out.println("aquialeatoriorepetido");
+                               g.drawLine(15+mapear(i,1080,15,tela.TamanhoVetor), mapear(tela.vetorAleatorioRepedindo.pegaNumero(i),180, tela.TamanhoVetor)+230, 15+mapear(i,1080,15,tela.TamanhoVetor),410);                               
+                               
                          }
                          break;
                  }                                                          

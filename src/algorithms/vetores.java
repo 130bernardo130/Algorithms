@@ -23,7 +23,9 @@ public class vetores {
     }
     
     public int pegaNumero(int i){
-        return this.vetor[i];
+       
+    	return this.vetor[i];
+       
     }
     
     public void setVetor(int vet[]){

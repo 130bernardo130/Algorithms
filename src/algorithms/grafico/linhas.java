@@ -16,11 +16,11 @@ public class linhas extends JPanel{
     static vetores vetor = null;
     int vetorUsado;
     public void setVetor(vetores vet) {
-        this.vetor=vet;
+       vetor=vet;
     }
     
     public void setVetor(int i){
-        this.vetorUsado= i;
+        vetorUsado= i;
     }
     
    public static int mapear(int valorMapeadoDentroDoPrimario, int maior_primario,int maior_secundario){
@@ -38,9 +38,7 @@ public class linhas extends JPanel{
          outr= outr*diferenca/1.0;
          return (int)outr;
     }
-   
-   
-   
+
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		setBackground(Color.white);
@@ -48,12 +46,27 @@ public class linhas extends JPanel{
 		g.drawLine(15, 0, 15,200);
 		g.drawLine(5, 180, 1103,180);                           		
 		setSize(1103, 200);
-         
-                for(int i = 0;i<vetor.getTotal();i++){
-                    g.drawLine(15+mapear(i,1080,15,vetor.getTotal()), mapear(vetor.pegaNumero(i),180, vetor.getTotal()), 15+mapear(i,1080,15,vetor.getTotal()),180);
-                }
-                
-		
-	
+		if(tela.vetorAleatorioRepedindobol){
+            vetor= tela.vetorAleatorioRepedindo;
+          
+
+        }else if(tela.vetorAleatoriobol){
+        	vetor= tela. vetorAleatorio;
+      
+            
+        }else if(tela.vetorOrganizadoCrescentebol){
+        	vetor= tela.vetorOrganizadoCrescente;
+          
+
+        }else if(tela.vetorOrganizadoDecrescentebol){
+        	vetor= tela. vetorOrganizadoDecrescente;
+           
         }
+		
+
+        for(int i = 0;i<vetor.getTotal();i++){    	
+            g.drawLine(15+mapear(i,1080,15,vetor.getTotal()), mapear(vetor.pegaNumero(i),180, vetor.getTotal()), 15+mapear(i,1080,15,vetor.getTotal()),180);
+        }	
+        
+	}
 }

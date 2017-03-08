@@ -8,6 +8,8 @@ package algorithms;
 import algorithms.grafico.linhas;
 import algorithms.grafico.linhas2;
 
+import java.awt.Graphics;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -189,7 +191,11 @@ public class tela extends javax.swing.JFrame {
         jLabel11.setText("Log de uso do programa:");
 
         JBiniciarTeste.setText("Organizar vetor");
-
+        JBiniciarTeste.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	JBiniciarTesteActionPerformed(evt);
+            }
+        });
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -363,16 +369,16 @@ public class tela extends javax.swing.JFrame {
         }
     }
         
-    public  JPanel  getPainel(){
+    static public  JPanel  getPainel(){
         return painelInterno;
     }
-    public void ColocaIsso(JPanel painel){
+    static public void ColocaIsso(JPanel painel){
         painelInterno.add(painel);
     }
-    public void limpaIsso(){
+    static public void limpaIsso(){
         painelInterno.removeAll();
     }
-    public void arrumaPosicao(){
+    static public void arrumaPosicao(){
         
     	javax.swing.GroupLayout painelInternoLayout = new javax.swing.GroupLayout(painelInterno);
         painelInterno.setLayout(painelInternoLayout);
@@ -385,6 +391,36 @@ public class tela extends javax.swing.JFrame {
             .addGap(0, 430, Short.MAX_VALUE)
         );
     }
+     public Graphics g = getGraphics();
+   
+    private void JBiniciarTesteActionPerformed(java.awt.event.ActionEvent evt){
+    	vetores vetorEstatico = null;
+    	threadGo = true;
+    	int i = 0;
+    	if(tela.vetorAleatorioRepedindobol){
+            vetorEstatico= vetorAleatorioRepedindo;
+            i=4;
+
+        }else if(tela.vetorAleatoriobol){
+           vetorEstatico = vetorAleatorio;
+           i = 3;
+            
+        }else if(tela.vetorOrganizadoCrescentebol){
+          vetorEstatico = vetorOrganizadoCrescente;
+          i = 1;
+
+        }else if(tela.vetorOrganizadoDecrescentebol){
+            vetorEstatico = vetorOrganizadoDecrescente;
+            i= 2;
+        }
+    	threadOrganiza_vetor organiza = new threadOrganiza_vetor(metodo);
+    	threadPreenche_grafico atualiza = new threadPreenche_grafico(vetorEstatico,i ,getGraphics());
+    	Thread atualizaTela = new Thread(atualiza);
+    	Thread preenche = new Thread(organiza);
+    	atualizaTela.start();    	
+    	preenche.start();
+    	
+    }
     private void JBVetorAleatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVetorAleatorioActionPerformed
         // TODO add your handling code here:
     	painelInterno.removeAll();
@@ -395,14 +431,14 @@ public class tela extends javax.swing.JFrame {
         painelInterno.remove(linha);
         painelInterno.add(linha);
         
-        linhas2  linha2= new linhas2();
+       /* linhas2  linha2= new linhas2();
         linha2.setVetor(3);
         linha2.paintComponent(getGraphics());
         painelInterno.add(linha2);
-        Tela_Log_funcionamento.append("tentativa de colocar linhas \n");
+        Tela_Log_funcionamento.append("tentativa de colocar linhas \n");*/
         linha.setVisible(true);
-    	
-    	Tela_Log_funcionamento.append("Vetor definido como aleatorio");
+        todasMenosEsta(3);
+    	Tela_Log_funcionamento.append("Vetor definido como aleatorio\n");
          JLtipo_de_vetor_selecionado.setText("Aleatorio");
     }//GEN-LAST:event_JBVetorAleatorioActionPerformed
 
@@ -416,10 +452,10 @@ public class tela extends javax.swing.JFrame {
         painelInterno.remove(linha);
         
         painelInterno.add(linha);
-        linhas2  linha2= new linhas2();
+        /*linhas2  linha2= new linhas2();
         linha2.setVetor(1);
         linha2.paintComponent(getGraphics());
-        painelInterno.add(linha2);
+        painelInterno.add(linha2);*/
         
         linha.setVisible(true);
         todasMenosEsta(1);
@@ -429,67 +465,78 @@ public class tela extends javax.swing.JFrame {
 
     private void JBbubleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBbubleActionPerformed
         // TODO add your handling code here:
+    	metodo = 3;
+    	JLalgaritmo_usado.setText("Bubble");
+    	Tela_Log_funcionamento.append("metodo definido: Bubble\n");
     }//GEN-LAST:event_JBbubleActionPerformed
 
     private void JBQuickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBQuickActionPerformed
         // TODO add your handling code here:
+    	metodo = 1;
+    	JLalgaritmo_usado.setText("Quick");
+    	Tela_Log_funcionamento.append("metodo definido: Quick\n");
     }//GEN-LAST:event_JBQuickActionPerformed
 
     private void JBinsertionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBinsertionActionPerformed
         // TODO add your handling code here:
+    	metodo = 2;
+    	JLalgaritmo_usado.setText("Insertion");
+    	Tela_Log_funcionamento.append("metodo definido: Isnsertion\n");
     }//GEN-LAST:event_JBinsertionActionPerformed
 
     private void JBQuantidade_100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBQuantidade_100ActionPerformed
         // TODO add your handling code here:
         TamanhoVetor = 100000;
-        Tela_Log_funcionamento.append("Tamanho Setado: "+TamanhoVetor);
+        Tela_Log_funcionamento.append("Tamanho definido: "+TamanhoVetor+"\n");
     }//GEN-LAST:event_JBQuantidade_100ActionPerformed
 
     private void JBQuantidade_200ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBQuantidade_200ActionPerformed
         // TODO add your handling code here:
         
         TamanhoVetor = 200000;
-        Tela_Log_funcionamento.append("Tamanho Setado: "+TamanhoVetor);
+        Tela_Log_funcionamento.append("Tamanho definido: "+TamanhoVetor+" \n");
     }//GEN-LAST:event_JBQuantidade_200ActionPerformed
 
     private void JBQuantidade_300ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBQuantidade_300ActionPerformed
         // TODO add your handling code here:
         
         TamanhoVetor = 300000;
-        Tela_Log_funcionamento.append("Tamanho Setado: "+TamanhoVetor);
+        Tela_Log_funcionamento.append("Tamanho definido: "+TamanhoVetor+" \n");
     }//GEN-LAST:event_JBQuantidade_300ActionPerformed
 
     private void JBQuantidade_400ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBQuantidade_400ActionPerformed
         // TODO add your handling code here:
         TamanhoVetor = 400000;
-        Tela_Log_funcionamento.append("Tamanho Setado: "+TamanhoVetor);
+        Tela_Log_funcionamento.append("Tamanho definido: "+TamanhoVetor+" \n");
     }//GEN-LAST:event_JBQuantidade_400ActionPerformed
 
     private void JBQuantidade_500ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBQuantidade_500ActionPerformed
         // TODO add your handling code here:
         TamanhoVetor = 500000;
-        Tela_Log_funcionamento.append("Tamanho Setado: "+TamanhoVetor);
+        Tela_Log_funcionamento.append("Tamanho definido: "+TamanhoVetor+" \n");
     }//GEN-LAST:event_JBQuantidade_500ActionPerformed
 
     private void JBVetorDecrescenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVetorDecrescenteActionPerformed
         // TODO add your handling code here:
     	painelInterno.removeAll();
-    	 arrumaPosicao();
-         
+    	 
+    	painelInterno.remove(linha);
          vetorOrganizadoDecrescente = new vetores(2, TamanhoVetor);
          linha.setVetor(vetorOrganizadoDecrescente);
+         arrumaPosicao();
          linha.paintComponent(getGraphics());      
-         painelInterno.remove(linha);
+         todasMenosEsta(2);
          
          painelInterno.add(linha);
-         linhas2  linha2= new linhas2();
+         /*linhas2  linha2= new linhas2();
          linha2.setVetor(2);
          todasMenosEsta(2);
          linha2.paintComponent(getGraphics());
          painelInterno.add(linha2);
-         Tela_Log_funcionamento.append("tentativa de colocar linhas \n");
+         Tela_Log_funcionamento.append("tentativa de colocar linhas \n");*/
          linha.setVisible(true);
-         Tela_Log_funcionamento.append("Vetor definido Decrescente");
+         
+         Tela_Log_funcionamento.append("Vetor definido Decrescente\n");
           JLtipo_de_vetor_selecionado.setText("Decrescente");
     }//GEN-LAST:event_JBVetorDecrescenteActionPerformed
 
@@ -497,22 +544,20 @@ public class tela extends javax.swing.JFrame {
         // TODO add your handling code here:
     	painelInterno.removeAll();
     	 arrumaPosicao();
-         
+    	 todasMenosEsta(4);
          vetorAleatorioRepedindo = new vetores(4, TamanhoVetor);
          linha.setVetor(vetorAleatorioRepedindo);
-         linha.paintComponent(getGraphics());      
-         painelInterno.remove(linha);
-         
+         linha.paintComponent(getGraphics());
          painelInterno.add(linha);
-       /*  linhas2  linha2= new linhas2();
+        /* linhas2  linha2= new linhas2();
          linha2.setVetor(4);
          todasMenosEsta(4);
          linha2.paintComponent(getGraphics());
-         painelInterno.add(linha2);*/
-         Tela_Log_funcionamento.append("tentativa de colocar linhas \n");
+         painelInterno.add(linha2);
+         */
          linha.setVisible(true);
-         Tela_Log_funcionamento.append("Vetor definido Aleatorio repetido"); 
-         JLtipo_de_vetor_selecionado.setText("Aleatorio repetido");
+         Tela_Log_funcionamento.append("Vetor definido Aleatorio repetido\n"); 
+         
           JLtipo_de_vetor_selecionado.setText("Membros repetidos");
     }//GEN-LAST:event_JBVetorRepetidoActionPerformed
 
@@ -580,6 +625,6 @@ public class tela extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel painelInterno;
+    static public javax.swing.JPanel painelInterno;
     // End of variables declaration//GEN-END:variables
 }
