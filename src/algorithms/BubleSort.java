@@ -22,6 +22,7 @@ public class BubleSort {
     static void arruma(vetores vetor){
          int n = vetor.getTotal();
         int k;
+        //long time = System.currentTimeMillis();
         for (int m = n; m >= 0; m--) {
             for (int i = 0; i < n - 1; i++) {
                 k = i + 1;
@@ -39,6 +40,8 @@ public class BubleSort {
                 }
             }
         }
+      //time = System.currentTimeMillis()-time;
+      //tela.JLtempo_de_organizacao.setText(time+"ms");
       tela.threadGo= false;  
     }
 

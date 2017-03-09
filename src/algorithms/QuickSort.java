@@ -12,7 +12,7 @@ package algorithms;
 public class QuickSort {
     private int array[];
     private int length;
-    long tempoQuick;
+    long tempoQuick= 0;
     public void sort(vetores inputArr) {
          tempoQuick = System.nanoTime();
         if (inputArr == null || inputArr.getTotal() == 0) {
@@ -70,11 +70,13 @@ public class QuickSort {
             quickSort(lowerIndex, j);
         }
         if (i < higherIndex){
-            quickSort(i, higherIndex);
+            quickSort(i, higherIndex);      
         }
-        tempoQuick =  System.nanoTime()- tempoQuick ;
         
-        tela.JLtempo_de_organizacao.setText(tempoQuick+"ms");
+        
+       
+        
+      
         tela.threadGo= false;
     }
  

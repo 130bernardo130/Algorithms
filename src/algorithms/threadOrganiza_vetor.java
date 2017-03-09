@@ -5,6 +5,8 @@
  */
 package algorithms;
 
+import javax.swing.JTextArea;
+
 /**
  *
  * @author Bernardo
@@ -12,8 +14,10 @@ package algorithms;
 public class threadOrganiza_vetor  implements Runnable {
     int metodo;
     int tipoVetor;
-    public threadOrganiza_vetor(int metodo) {    
+    JTextArea texto;
+    public threadOrganiza_vetor(int metodo,JTextArea texto) {    
         this.metodo = metodo;
+        this.texto = texto;
     }
 
     
@@ -22,7 +26,11 @@ public class threadOrganiza_vetor  implements Runnable {
     public void run() {
         QuickSort quick = new QuickSort();
         InsertionSort insert = new InsertionSort();
+        long   tempoQuick =  System.currentTimeMillis();
+     
         switch(metodo){
+       
+        
             case 1:
                 if(tela.vetorAleatorioRepedindobol){                    
                     quick.sort(tela.vetorAleatorioRepedindo);                  
@@ -57,6 +65,9 @@ public class threadOrganiza_vetor  implements Runnable {
                 }
                 break;
         }
+        tempoQuick =  System.currentTimeMillis()- tempoQuick ;
+        tela.JLtempo_de_organizacao.setText(tempoQuick+"ms");
+        texto.append("tempo de: "+tempoQuick+"ms\n");
     
     }
 }

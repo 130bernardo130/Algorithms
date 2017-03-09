@@ -20,7 +20,7 @@ public class InsertionSort {
         vetor.setaNumero(i2, auxiliar);
     }
     public vetores doInsertionSort(vetores input){
-         
+       //long tempoQuick= System.currentTimeMillis();  
         for (int i = 1; i < input.getTotal(); i++) {
             for(int j = i ; j > 0 ; j--){
                 if(input.pegaNumero(j) < input.pegaNumero(j-1)){
@@ -37,6 +37,8 @@ public class InsertionSort {
                 }
             }
         }
+       // tempoQuick = System.currentTimeMillis() - tempoQuick; 
+        //tela.JLtempo_de_organizacao.setText(tempoQuick+"ms");
         tela.threadGo= false;
         return input;
     }

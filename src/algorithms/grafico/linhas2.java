@@ -48,9 +48,7 @@ public class linhas2 extends JPanel{
                 g.drawLine(15, 230 , 15, 430);
                 g.drawLine(15,410,1103,410);
                 setSize(1103, 430);
-            if(vetorUsado == 0){               
-                	System.out.println("DEU MERDA");                                
-            }else{
+           
             	if(tela.vetorAleatorioRepedindobol){
                     vetor= tela.vetorAleatorioRepedindo;
                   
@@ -72,7 +70,7 @@ public class linhas2 extends JPanel{
                      g.drawLine(15,410,1103,410);
                      
                   g.drawLine(15+mapear(i,1080,15,vetor.vetor.length), mapear(vetor.vetor[i],180, vetor.vetor.length)+230, 15+mapear(i,1080,15,vetor.vetor.length),410);
-               }
+          
                /*switch(vetorUsado){
                      case 1:
                          for(int i = 0;i<tela.vetorOrganizadoCrescente.vetor.length;i++){
