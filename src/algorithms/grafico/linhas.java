@@ -41,16 +41,16 @@ public class linhas extends JPanel{
 
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
+		 int muda = 30;
 		setBackground(Color.white);
 		g.setColor(Color.blue);
-		g.drawLine(15, 0, 15,200);
-		g.drawLine(5, 180, 1103,180);                           		
-		setSize(1103, 200);
+		                          		
+		setSize(1103, 200+muda);
 	
         for(int i = 0;i<tela.vetorEstatico.getTotal();i++){ 
-        	g.drawLine(15, 0, 15,200);
-    		g.drawLine(5, 180, 1103,180);    
-            g.drawLine(15+mapear(i,1080,15,tela.vetorEstatico.getTotal()), mapear(tela.vetorEstatico.vetor[i],180, tela.vetorEstatico.getTotal()), 15+mapear(i,1080,15,tela.vetorEstatico.getTotal()),180);
+        	g.drawLine(15, 0, 15,230);
+    		g.drawLine(0, 210, 1103,210);    
+            g.drawLine(15+mapear(i,1080,15,tela.vetorEstatico.getTotal()), mapear(tela.vetorEstatico.vetor[i],180, tela.vetorEstatico.getTotal())+muda, 15+mapear(i,1080,15,tela.vetorEstatico.getTotal()),180+muda);
         }	
         
 	}
