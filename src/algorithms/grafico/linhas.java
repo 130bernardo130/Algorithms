@@ -13,9 +13,9 @@ import javax.swing.JPanel;
 
 public class linhas extends JPanel{
 
-    static vetores vetor = null;
+    private int[] vetor = null;
     int vetorUsado;
-    public void setVetor(vetores vet) {
+    public void setVetor(int[] vet) {
        vetor=vet;
     }
     
@@ -47,9 +47,9 @@ public class linhas extends JPanel{
 		g.drawLine(5, 180, 1103,180);                           		
 		setSize(1103, 200);
 	
-		
-
-        for(int i = 0;i<tela.vetorEstatico.getTotal();i++){    	
+        for(int i = 0;i<tela.vetorEstatico.getTotal();i++){ 
+        	g.drawLine(15, 0, 15,200);
+    		g.drawLine(5, 180, 1103,180);    
             g.drawLine(15+mapear(i,1080,15,tela.vetorEstatico.getTotal()), mapear(tela.vetorEstatico.vetor[i],180, tela.vetorEstatico.getTotal()), 15+mapear(i,1080,15,tela.vetorEstatico.getTotal()),180);
         }	
         

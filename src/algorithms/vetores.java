@@ -6,6 +6,7 @@
 package algorithms;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,13 +14,20 @@ import java.util.logging.Logger;
  *
  * @author Bernardo
  */
-public class vetores {
+public class vetores implements Cloneable{
   
     public int vetor[];
     
-    
+    public void copiaPorFavor(int[] vet){
+    	this.vetor= Arrays.copyOf(vet, vet.length);
+    }
     public void setaNumero(int i, int valor){
         this.vetor[i] = valor;
+    }
+    
+    
+    public vetores(){
+    	
     }
     
     public int pegaNumero(int i){
@@ -44,7 +52,9 @@ public class vetores {
         }
     }
     
-    
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }  
  
     
     public vetores(int tipo, int total) {        

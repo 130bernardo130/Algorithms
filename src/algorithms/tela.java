@@ -9,6 +9,8 @@ import algorithms.grafico.linhas;
 import algorithms.grafico.linhas2;
 
 import java.awt.Graphics;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -214,7 +216,7 @@ public class tela extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JLtempo_de_organizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JLtempo_de_organizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(213, 213, 213)
                         .addComponent(jLabel11))
                     .addGroup(layout.createSequentialGroup()
@@ -337,8 +339,9 @@ public class tela extends javax.swing.JFrame {
     public static boolean vetorAleatorioRepedindobol= false;
     public static int TamanhoVetor =100000;
     public static int metodo;
-    
     public static vetores vetorEstatico;
+    
+    
     private void todasMenosEsta(int i){
         switch(i){
             case 1:
@@ -396,26 +399,26 @@ public class tela extends javax.swing.JFrame {
      public Graphics g = getGraphics();
    
     private void JBiniciarTesteActionPerformed(java.awt.event.ActionEvent evt){
-    	vetores vetorEstatico = null;
+    	//vetores vetorEstatico = null;
     	threadGo = true;
     	int i = 0;
     	if(tela.vetorAleatorioRepedindobol){
-            vetorEstatico= vetorAleatorioRepedindo;
+           // vetorEstatico= vetorAleatorioRepedindo;
             i=4;
 
         }else if(tela.vetorAleatoriobol){
-           vetorEstatico = vetorAleatorio;
+           //vetorEstatico = vetorAleatorio;
            i = 3;
             
         }else if(tela.vetorOrganizadoCrescentebol){
-          vetorEstatico = vetorOrganizadoCrescente;
+         // vetorEstatico = vetorOrganizadoCrescente;
           i = 1;
 
         }else if(tela.vetorOrganizadoDecrescentebol){
-            vetorEstatico = vetorOrganizadoDecrescente;
+           // vetorEstatico = vetorOrganizadoDecrescente;
             i= 2;
         }
-    	threadOrganiza_vetor organiza = new threadOrganiza_vetor(metodo);
+    	threadOrganiza_vetor organiza = new threadOrganiza_vetor(metodo,Tela_Log_funcionamento);
     	threadPreenche_grafico atualiza = new threadPreenche_grafico(vetorEstatico,i ,getGraphics());
     	Thread atualizaTela = new Thread(atualiza);
     	Thread preenche = new Thread(organiza);
@@ -428,21 +431,16 @@ public class tela extends javax.swing.JFrame {
     	painelInterno.removeAll();
         arrumaPosicao();
         vetorAleatorio = new vetores(3, TamanhoVetor);
-        vetorEstatico = vetorAleatorio;
         
+        vetorEstatico=vetorAleatorio;  
+       
         linha.paintComponent(getGraphics());      
         painelInterno.remove(linha);
         painelInterno.add(linha);
-        
-       /* linhas2  linha2= new linhas2();
-        linha2.setVetor(3);
-        linha2.paintComponent(getGraphics());
-        painelInterno.add(linha2);
-        Tela_Log_funcionamento.append("tentativa de colocar linhas \n");*/
         linha.setVisible(true);
         todasMenosEsta(3);
     	Tela_Log_funcionamento.append("Vetor definido como aleatorio\n");
-         JLtipo_de_vetor_selecionado.setText("Aleatorio");
+        JLtipo_de_vetor_selecionado.setText("Aleatorio");
     }//GEN-LAST:event_JBVetorAleatorioActionPerformed
 
     private void JBvetorCrescenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBvetorCrescenteActionPerformed
@@ -450,16 +448,11 @@ public class tela extends javax.swing.JFrame {
     	painelInterno.removeAll();
     	arrumaPosicao();
         vetorOrganizadoCrescente = new vetores(1, TamanhoVetor);
-       	vetorEstatico = vetorOrganizadoCrescente;
+        int s;
+        vetorEstatico = vetorOrganizadoCrescente;          
+
         linha.paintComponent(getGraphics());      
-        painelInterno.remove(linha);
-        
-        painelInterno.add(linha);
-        /*linhas2  linha2= new linhas2();
-        linha2.setVetor(1);
-        linha2.paintComponent(getGraphics());
-        painelInterno.add(linha2);*/
-        
+        painelInterno.add(linha);       
         linha.setVisible(true);
         todasMenosEsta(1);
        Tela_Log_funcionamento.append("Vetor definido como crescente\n");
@@ -522,21 +515,14 @@ public class tela extends javax.swing.JFrame {
     private void JBVetorDecrescenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVetorDecrescenteActionPerformed
         // TODO add your handling code here:
     	painelInterno.removeAll();
-    	 
-    	painelInterno.remove(linha);
          vetorOrganizadoDecrescente = new vetores(2, TamanhoVetor);
-         vetorEstatico = vetorOrganizadoDecrescente;
-         arrumaPosicao();
-         linha.paintComponent(getGraphics());      
-         todasMenosEsta(2);
          
-         painelInterno.add(linha);
-         /*linhas2  linha2= new linhas2();
-         linha2.setVetor(2);
-         todasMenosEsta(2);
-         linha2.paintComponent(getGraphics());
-         painelInterno.add(linha2);
-         Tela_Log_funcionamento.append("tentativa de colocar linhas \n");*/
+         vetorEstatico=vetorOrganizadoDecrescente;
+         arrumaPosicao();
+        
+         linha.paintComponent(getGraphics());      
+         todasMenosEsta(2);         
+         painelInterno.add(linha);      
          linha.setVisible(true);
          
          Tela_Log_funcionamento.append("Vetor definido Decrescente\n");
@@ -549,15 +535,12 @@ public class tela extends javax.swing.JFrame {
     	 arrumaPosicao();
     	 todasMenosEsta(4);
          vetorAleatorioRepedindo = new vetores(4, TamanhoVetor);
-         vetorEstatico = vetorAleatorioRepedindo;
+        
+         vetorEstatico=vetorAleatorioRepedindo;
+         //linha.setVetor(tela.vetorEstatico.pegavetor());
          linha.paintComponent(getGraphics());
          painelInterno.add(linha);
-        /* linhas2  linha2= new linhas2();
-         linha2.setVetor(4);
-         todasMenosEsta(4);
-         linha2.paintComponent(getGraphics());
-         painelInterno.add(linha2);
-         */
+      
          linha.setVisible(true);
          Tela_Log_funcionamento.append("Vetor definido Aleatorio repetido\n"); 
          
